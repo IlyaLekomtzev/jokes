@@ -1,21 +1,40 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { store } from './app/store';
+import { render } from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import * as serviceWorker from './serviceWorker';
+import { store } from './store/store';
+import { App } from './components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { Color } from './const';
+import 'normalize.css';
 
-ReactDOM.render(
-  <React.StrictMode>
+const rootNode = document.getElementById('root');
+const GlobalStyled = createGlobalStyle`
+    * {
+      box-sizing: border-box;
+    }
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: ${Color.MainBg};
+        color: ${Color.MainText};
+    }
+`;
+
+const theme = {
+    media: {
+        phone: '(max-width: 425px)',
+        tablet: '(max-width: 768px)'
+    }
+};
+
+render(
     <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+        <GlobalStyled />
+        <Router>
+            <ThemeProvider theme={theme}>
+                <App />
+            </ThemeProvider>
+        </Router>
+    </Provider>,
+    rootNode
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
