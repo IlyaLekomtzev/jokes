@@ -5,12 +5,13 @@ import { Color } from '../../const';
 interface SwitcherPropsTypes {
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     label?: string;
+    checked?: boolean;
 }
 
-const Switcher: FC<SwitcherPropsTypes> = ({ onChange, label }) => {
+const Switcher: FC<SwitcherPropsTypes> = ({ onChange, label, checked }) => {
     return (
         <CheckBoxWrapper>
-            <CheckBox id="checkbox" type="checkbox" onChange={onChange} />
+            <CheckBox id="checkbox" type="checkbox" onChange={onChange} checked={checked} />
             <CheckBoxLabel htmlFor="checkbox" />
             <CheckBoxTitle>{label}</CheckBoxTitle>
         </CheckBoxWrapper>

@@ -1,13 +1,16 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import jokeReducer from './joke/jokeSlice';
+import favoritesReducer from './favorites/favoritesSlice';
 
 export enum Reducer {
-    Joke = 'JOKE'
+    Joke = 'JOKE',
+    Favorites = 'FAVORITES'
 }
 
 export const store = configureStore({
     reducer: {
         [Reducer.Joke]: jokeReducer,
+        [Reducer.Favorites]: favoritesReducer
     },
 });
 

@@ -9,7 +9,7 @@ import { AppRoute, Color } from '../const';
 
 const Toolbar: FC = () => {
     const dispatch = useAppDispatch();
-    const isLoading = useAppSelector((state) => state[Reducer.Joke].isLoading);
+    const { isLoading, autoload: isAutoload } = useAppSelector((state) => state[Reducer.Joke]);
 
     const handleClick = () => {
         dispatch(getJoke());
@@ -30,6 +30,7 @@ const Toolbar: FC = () => {
             <Switcher
                 label="Autoload (3s)"
                 onChange={handleChange}
+                checked={isAutoload}
             />
             <StyledLink to={AppRoute.Favorites}>Favorites list</StyledLink>
         </StyledToolbarWrap>

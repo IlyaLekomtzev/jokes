@@ -23,7 +23,8 @@ const GlobalStyled = createGlobalStyle`
 const theme = {
     media: {
         phone: '(max-width: 425px)',
-        tablet: '(max-width: 768px)'
+        tablet: '(max-width: 768px)',
+        laptop: '(max-width: 1199px)'
     }
 };
 
